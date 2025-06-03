@@ -13,7 +13,7 @@ const UUID = process.env.UUID || 'b28f60af-d0b9-4ddf-baaa-7e49c93c380b';
 const uuid = UUID.replace(/-/g, "");
 const DOMAIN = process.env.DOMAIN || '';  //项目域名或已反代的域名，不带前缀，建议填已反代的域名
 const NAME = process.env.NAME || 'NDWS';
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 8080;
 
 // 创建HTTP路由
 const httpServer = http.createServer((req, res) => {
