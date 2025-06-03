@@ -7,7 +7,7 @@ COPY app.js ./
 
 EXPOSE 3000
 
-RUN apt-get update -y && \
+RUN apt-get update && \
     apt-get install -y curl bash && \
     npm install && \
     chmod +x app.js
