@@ -1,15 +1,21 @@
 FROM node:latest
 
-WORKDIR /app
-
-COPY package.json ./
-COPY app.js ./
+WORKDIR /home/choreouser
 
 EXPOSE 3000
 
-RUN apt-get update && \
-    apt-get install -y curl bash && \
-    npm install && \
-    chmod +x app.js
+COPY package.json /home/choreouser/
+COPY app.js /home/choreouser/
 
-CMD ["npm", "start"]
+RUN apt-get update &&\
+    apt install --only-upgrade linux-libc-dev &&\
+    apt-get install -y curl iproute2 vim netcat-openbsd &&\
+    addgroup --gid 10008 choreo &&\
+    adduser --disabled-password  --no-create-home --uid 10008 --ingroup choreo choreouser &&\
+    usermod -aG sudo choreouser &&\
+    chmod +x app.js &&\
+    npm install
+
+CMD [ "node", "app.js" ]
+
+USER 10008
