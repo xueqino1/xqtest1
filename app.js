@@ -19,7 +19,7 @@ const port = process.env.PORT || 8080;
 const httpServer = http.createServer((req, res) => {
   if (req.url === '/') {
     res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello, World\n');
+    res.end('Hello- World\n');
   } else if (req.url === '/sub') {
     const vlessURL = `vless://${UUID}@ip.sb:443?encryption=none&security=tls&sni=${DOMAIN}&type=ws&host=${DOMAIN}&path=%2F#${NAME}`;
     
@@ -34,7 +34,7 @@ const httpServer = http.createServer((req, res) => {
 });
 
 httpServer.listen(port, () => {
-  console.log(`HTTP Server is running on port ${port}`);
+  console.log(`HTTPServer is running on port ${port}`);
 });
 
 
